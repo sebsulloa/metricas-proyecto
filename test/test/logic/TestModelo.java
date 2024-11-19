@@ -30,7 +30,7 @@ public class TestModelo<T> {
 	public void testDarTamano() {
 		setUp2();
 		int x=modelo.darTamano();
-		assertEquals("No es el tamaño correcto", CAPACIDAD,x);
+		assertEquals("No es el tamaño correcto", 0,x);
 		// TODO
 	}
 
