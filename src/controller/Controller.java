@@ -39,7 +39,7 @@ public class Controller<T> {
 		{
 			view.printMenu();
 
-			int option = lector.nextInt();
+			int option = Integer.parseInt(lector.nextLine());
 			switch(option){
 			case 1:
 				view.printMessage("--------- \nCargar datos");
