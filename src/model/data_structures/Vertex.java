@@ -36,7 +36,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 	{
 		try {
 			arcos.insertElement(edge, arcos.size() +1);
-		} catch (PosException | NullException e) {
+		} catch (DataStructureException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -74,7 +74,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 					retorno= arcos.getElement(i);
 				}
 			} 
-			catch (PosException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -92,7 +92,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 		{
 			try {
 				retorno.insertElement(arcos.getElement(i).getDestination(), retorno.size()+1);
-			} catch (PosException | NullException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -126,7 +126,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 						cola.enqueue(dest);
 					}
 				} 
-				catch (PosException | VacioException e) 
+				catch (DataStructureException e) 
 				{
 					e.printStackTrace();
 				}
@@ -148,7 +148,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 					dest.dfs(arcos.getElement(i));
 				}
 			} 
-			catch (PosException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				e.printStackTrace();
 			}
@@ -169,7 +169,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 				{
 					destino.topologicalOrder(pre, post, reversePost);
 				}
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -204,7 +204,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 					actual.getSCC(tabla, idComponente);
 				}
 			} 
-			catch (PosException | VacioException e) {
+			catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -226,7 +226,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 			{
 				try {
 					mst.insertElement(actual, mst.size()+1);
-				} catch (PosException | NullException e) {
+				} catch (DataStructureException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -246,7 +246,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 			Edge<K, V> actual=null;
 			try {
 				actual = inicio.edges().getElement(i);
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -318,7 +318,7 @@ public class Vertex<K extends Comparable<K>,V  extends Comparable <V>> implement
 					}
 				}
 			} 
-			catch (PosException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				e.printStackTrace();
 			}

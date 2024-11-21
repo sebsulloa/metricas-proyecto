@@ -11,7 +11,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
         for(int i=1; i<=tamanoTabla; i++) {
             try {
                 listaNodos.insertElement(null, i);
-            } catch (PosException | NullException e) {
+            } catch (DataStructureException e) {
                 e.printStackTrace();
             }
         }
@@ -31,7 +31,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                 listasc = listaNodos.getElement(posicion);
                 listasc.insertElement(new NodoTS<K,V>(key, value), listasc.size()+1);
             }
-        } catch (PosException | VacioException | NullException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
         
@@ -56,7 +56,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                     }
                 }
             }
-        } catch (PosException | VacioException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
         return retornar;
@@ -76,7 +76,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                     }
                 }
             }
-        } catch (PosException | VacioException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
         if(retornar != null) {
@@ -103,7 +103,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return lista;
@@ -122,7 +122,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return lista;
@@ -144,7 +144,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return nodos;
@@ -169,7 +169,7 @@ public class TablaHashSeparteChaining<K extends Comparable<K>, V extends Compara
             }
             cantidadRehash++;
         }
-        catch (NullException | VacioException | PosException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
     }

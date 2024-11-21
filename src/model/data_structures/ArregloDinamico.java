@@ -52,19 +52,19 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			return tamanoAct;
 		}
 
-		public T getElement(int pos) throws PosException, VacioException 
+		public T getElement(int pos) throws DataStructureException
 		{
 			if (pos<1)
 			{
-				 throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			if(pos > tamanoMax)
 			{
-				throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if(isEmpty())
 			{
-				throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else
 			{
@@ -99,7 +99,7 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			
 		}
 
-		public T deleteElement(T dato) throws VacioException, NullException
+		public T deleteElement(T dato) throws DataStructureException
 		{
 			
 			// Recomendacion: Usar el criterio de comparacion natural (metodo compareTo()) definido en Strings.
@@ -108,11 +108,11 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 			 if (isEmpty())
 			 {
-				 throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			 }
 			 else if (dato==null)
 			 {
-				 throw new NullException("No es válido el elemento ingresado");
+				throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 			 }
 			 else
 			 {
@@ -185,15 +185,15 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 		}
 
 		@Override
-		public void insertElement(T elemento, int pos) throws PosException, NullException 
+		public void insertElement(T elemento, int pos) throws DataStructureException
 		{
 			if (pos-1>tamanoMax)
 			{
-				throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if (pos<1)
 			{
-				throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else
 			{
@@ -268,21 +268,21 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 
 		@Override
-		public T deleteElement(int pos) throws PosException, VacioException 
+		public T deleteElement(int pos) throws DataStructureException
 		{
 			T elemento=null;
 			
 			if (pos>tamanoMax)
 			{
-				throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if (pos<1)
 			{
-				throw new PosException("La posición no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if (isEmpty())
 			{
-				throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else
 			{
@@ -318,12 +318,12 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 
 		@Override
-		public T firstElement() throws VacioException 
+		public T firstElement() throws DataStructureException
 		{
 			T retorno=null;
 			if (tamanoAct==0)
 			{
-				 throw new VacioException("La lista está vacía");
+				 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else
 			{
@@ -335,11 +335,11 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 
 		@Override
-		public T lastElement() throws VacioException 
+		public T lastElement() throws DataStructureException
 		{
 			if (tamanoAct==0)
 			{
-				 throw new VacioException("La lista está vacía");
+				 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else
 			{
@@ -357,16 +357,16 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 
 		@Override
-		public int isPresent(T element) throws NullException, VacioException 
+		public int isPresent(T element) throws DataStructureException
 		{
 			int pos=-1;
 			if (element ==null)
 			{
-				throw new NullException("No es válido el elemento ingresado");
+				throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 			}
 			else if (isEmpty())
 			{
-				throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else
 			{
@@ -387,27 +387,27 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 
 
 		@Override
-		public void exchange(int pos1, int pos2) throws PosException, VacioException 
+		public void exchange(int pos1, int pos2) throws DataStructureException
 		{
 			 if (pos1>tamanoMax)
 			 {
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			 }
 			 else if (pos2>tamanoMax)
 			 {
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			 }
 			 else if (pos1<1)
 			 {
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			 }
 			 else if (pos2<1)
 			 {
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			 }
 			 else if(isEmpty())
 			 {
-				 throw new VacioException("La lista está vacía");
+				 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			 }
 			 else if ( pos1!=pos2 && tamanoAct>1)
 			 {
@@ -421,23 +421,23 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 		}
 		
 		@Override
-		public void changeInfo(int pos, T element) throws PosException, VacioException, NullException 
+		public void changeInfo(int pos, T element) throws DataStructureException
 		{
 			if (pos<1 || pos >tamanoMax)
 			{
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if (pos >tamanoMax)
 			{
-				 throw new PosException("La posición no es válida");
+				 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 			}
 			else if (isEmpty())
 			{
-				throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else if(element==null)
 			{
-				throw new NullException("No es válido el elemento ingresado");
+				throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 			}
 			else
 			{
@@ -446,15 +446,15 @@ public class ArregloDinamico<T extends Comparable<T>> implements ILista<T> {
 			
 		}
 		
-		public ILista<T> sublista(int pos, int numElementos) throws PosException, VacioException, NullException
+		public ILista<T> sublista(int pos, int numElementos) throws DataStructureException
 		{
 			if (isEmpty())
 			{
-				throw new VacioException("La lista está vacía");
+				throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 			}
 			else if (numElementos<0)
 			{
-				throw new PosException("La cantidad de elementos no es válida");
+				throw new DataStructureException(DataStructureException.ExceptionType.POS, "La cantidad de elementos no es válida");
 			}
 			else if (numElementos >= size())
 			{

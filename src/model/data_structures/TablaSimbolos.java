@@ -17,7 +17,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 		{
 			listaNodos.insertElement(agregar, size()+1);
 		} 
-		catch (PosException | NullException e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +49,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 					i = m +1;
 				}
 			} 
-			catch (PosException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -68,7 +68,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 			eliminado1=listaNodos.getElement(pos).getValue();
 			listaNodos.deleteElement(pos);
 		} 
-		catch (VacioException | NullException | PosException e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,7 +86,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 		{
 			pos = listaNodos.isPresent((NodoTS<K, V>) get(key));
 		} 
-		catch (VacioException | NullException | PosException e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 			{
 				lista.insertElement(listaNodos.getElement(i).getKey(), lista.size()+1);
 			} 
-			catch (PosException | NullException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -140,7 +140,7 @@ public class TablaSimbolos <K extends Comparable<K>, V extends Comparable <V>> i
 			{
 				lista.insertElement(listaNodos.getElement(i).getValue(), lista.size()+1);
 			} 
-			catch (PosException | VacioException| NullException e) 
+			catch (DataStructureException e) 
 			{
 				// TODO Auto-generated catch block
 				e.printStackTrace();

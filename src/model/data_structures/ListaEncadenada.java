@@ -44,12 +44,12 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		
 	}
 	
-	public void addLastCola(T element) throws NullException
+	public void addLastCola(T element) throws DataStructureException
 	{
 
 		 if (element==null)
 		 {
-			 throw new NullException("No es válido el elemento ingresado");
+			throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 		 }
 		 
 		else 
@@ -71,17 +71,17 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		}
 	}
 	
-	public void insertElement(T elemento, int pos) throws PosException, NullException
+	public void insertElement(T elemento, int pos) throws DataStructureException
 	{
 		 Nodo<T> nuevo = new Nodo<T>(elemento);
 		 
 		 if (pos<1 || pos-1 >size)
 		 {
-			 throw new PosException("La posición no es válida");
+			 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 		 }
 		 else if (elemento==null)
 		 {
-			 throw new NullException("No es válido el elemento ingresado");
+			 throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 		 }
 		 
 		 else
@@ -115,7 +115,7 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 	
 	//Siempre se llama a insert o a delete primero, esos métodos manejan los casos de que el elemento sea null, 
 	//isEmpty o que la posición no sea válida
-	public T removeFirst() throws VacioException
+	public T removeFirst() throws DataStructureException
 	{
 		T primero= firstElement();
 		if (first!=null)
@@ -145,12 +145,12 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		
 	}
 	
-	public T removeLastPila() throws VacioException
+	public T removeLastPila() throws DataStructureException
 	{
 		Nodo<T> ultimo=null;
 		if (isEmpty())
 		{
-			 throw new VacioException("La lista está vacía");
+			 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else if(first.getNext()!=null)
 		{
@@ -191,17 +191,17 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		
 	}
 	
-	public T deleteElement(int pos) throws PosException, VacioException
+	public T deleteElement(int pos) throws DataStructureException
 	{
 		T retorno=null;
 		
 		 if (pos<1 || pos >size)
 		 {
-			 throw new PosException("La posición no es válida");
+			 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 		 }
 		 else if (isEmpty())
 		 {
-			 throw new VacioException("La lista está vacía");
+			 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		 }
 		 else
 		 {
@@ -242,11 +242,11 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		return retorno;
 	}
 	
-	public T firstElement() throws VacioException
+	public T firstElement() throws DataStructureException
 	{
 		if (isEmpty())
 		{
-			throw new VacioException("La lista está vacía");
+			throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else
 		{
@@ -267,15 +267,15 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		
 	}
 	
-	public T getElement(int pos) throws PosException, VacioException
+	public T getElement(int pos) throws DataStructureException
 	{
 		if (pos<1 || pos >size)
 		{
-			 throw new PosException("La posición no es válida");
+			 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 		}
 		else if(isEmpty())
 		{
-			throw new VacioException("La lista está vacía");
+			throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else
 		{
@@ -299,16 +299,16 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		return first==null;
 	}
 	
-	public int isPresent(T element) throws VacioException, NullException, PosException
+	public int isPresent(T element) throws DataStructureException
 	{
 		int pos =-1;
 		if (element ==null)
 		{
-			throw new NullException("No es válido el elemento ingresado");
+			throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 		}
 		else if (isEmpty())
 		{
-			throw new VacioException("La lista está vacía");
+			throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else
 		{
@@ -326,15 +326,15 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		return pos+1;
 	}
 	
-	public void exchange(int pos1, int pos2) throws PosException, VacioException
+	public void exchange(int pos1, int pos2) throws DataStructureException
 	{
 		 if (pos1>size|| pos2>size || pos1<1 || pos2<1)
 		 {
-			 throw new PosException("La posición no es válida");
+			 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 		 }
 		 else if(isEmpty())
 		 {
-			 throw new VacioException("La lista está vacía");
+			 throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		 }
 		 else if ( pos1!=pos2 && size>1)
 		{
@@ -360,19 +360,19 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 		}
 	}
 	
-	public void changeInfo(int pos, T element) throws PosException, VacioException, NullException
+	public void changeInfo(int pos, T element) throws DataStructureException
 	{
 		if (pos<1 || pos >size)
 		{
-			 throw new PosException("La posición no es válida");
+			 throw new DataStructureException(DataStructureException.ExceptionType.POS, "Posición inválida");
 		}
 		else if (isEmpty())
 		{
-			throw new VacioException("La lista está vacía");
+			throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else if(element==null)
 		{
-			throw new NullException("No es válido el elemento ingresado");
+			throw new DataStructureException(DataStructureException.ExceptionType.NULL, "No es válido el elemento ingresado");
 		}
 		else
 		{
@@ -388,15 +388,15 @@ public class ListaEncadenada <T extends Comparable <T>> implements ILista<T>{
 
 	}
 	
-	public ILista<T> sublista(int pos, int numElementos) throws PosException, VacioException, NullException
+	public ILista<T> sublista(int pos, int numElementos) throws DataStructureException
 	{
 		if (isEmpty())
 		{
-			throw new VacioException("La lista está vacía");
+			throw new DataStructureException(DataStructureException.ExceptionType.VACIO, "La lista está vacía");
 		}
 		else if (numElementos<0)
 		{
-			throw new PosException("La cantidad de elementos no es válida");
+			throw new DataStructureException(DataStructureException.ExceptionType.POS, "La cantidad de elementos no es válida");
 		}
 		else if (numElementos >= size())
 		{

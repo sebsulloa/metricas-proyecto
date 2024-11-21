@@ -10,6 +10,7 @@ import org.apache.commons.csv.CSVRecord;
 
 import model.data_structures.ArregloDinamico;
 import model.data_structures.Country;
+import model.data_structures.DataStructureException;
 import model.data_structures.Country.ComparadorXKm;
 import model.data_structures.Edge;
 import model.data_structures.GrafoListaAdyacencia;
@@ -18,12 +19,9 @@ import model.data_structures.ITablaSimbolos;
 import model.data_structures.Landing;
 import model.data_structures.ListaEncadenada;
 import model.data_structures.NodoTS;
-import model.data_structures.NullException;
 import model.data_structures.PilaEncadenada;
-import model.data_structures.PosException;
 import model.data_structures.TablaHashLinearProbing;
 import model.data_structures.TablaHashSeparteChaining;
-import model.data_structures.VacioException;
 import model.data_structures.Vertex;
 import model.data_structures.YoutubeVideo;
 import utils.Ordenamiento;
@@ -75,7 +73,7 @@ public class Modelo {
 	 * @throws VacioException 
 	 * @throws PosException 
 	 */
-	public YoutubeVideo getElement(int i) throws PosException, VacioException
+	public YoutubeVideo getElement(int i) throws DataStructureException
 	{
 		return (YoutubeVideo) datos.getElement( i);
 	}
@@ -99,7 +97,7 @@ public class Modelo {
 			fragmento+= "\n Info último país: " + "\n Capital: "+ pais.getCapitalName() + "\n Población: " + pais.getPopulation()+
 			"\n Usuarios: "+ pais.getUsers();
 		} 
-		catch (PosException | VacioException e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,7 +122,7 @@ public class Modelo {
 					max= (int) lista.getElement(i);
 				}
 			}
-			catch(PosException | VacioException  e)
+			catch(DataStructureException  e)
 			{
 				System.out.println(e.toString());
 			}
@@ -152,7 +150,7 @@ public class Modelo {
 				fragmento+= "\n Los landing points no pertenecen al mismo clúster";
 			}
 		} 
-		catch (PosException | VacioException e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -191,7 +189,7 @@ public class Modelo {
 					contador++;
 				}
 			}
-			catch (PosException | VacioException e) 
+			catch (DataStructureException e) 
 			{
 				e.printStackTrace();
 			}
@@ -335,7 +333,7 @@ public class Modelo {
 				fragmento+= "\n Id " + i + " : "+ pop.getId();
 			}
 		}
-		catch (PosException | VacioException | NullException e1) 
+		catch (DataStructureException e1) 
 		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -362,7 +360,7 @@ public class Modelo {
 			Country paisoriginal=(Country) paises.get(((Landing) ((Vertex)lista.getElement(1)).getInfo()).getPais());
 			countries.insertElement(paisoriginal, countries.size() + 1);
 		} 
-		catch (PosException | VacioException | NullException e1) 
+		catch (DataStructureException e1) 
 		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -396,7 +394,7 @@ public class Modelo {
 					}
 				}
 				
-			} catch (PosException | VacioException | NullException e) 
+			} catch (DataStructureException e) 
 			{
 				e.printStackTrace();
 			}
@@ -418,7 +416,7 @@ public class Modelo {
 				algsOrdenamientoEventos.ordenarMergeSort(unificado, comparador, true);
 			}	
 		}
-		catch (PosException | VacioException| NullException  e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -439,7 +437,7 @@ public class Modelo {
 		{
 			try {
 				fragmento+= "\n Nombre: " + ((Country) afectados.getElement(i)).getCountryName() + "\n Distancia al landing point: " + ((Country) afectados.getElement(i)).getDistlan();
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -461,7 +459,7 @@ public class Modelo {
 					unificarPaises(lista, listaResultado);
 				}
 			}
-		} catch (PosException | VacioException | NullException e) {
+		} catch (DataStructureException e) {
 			e.printStackTrace();
 		}
 		
@@ -469,7 +467,7 @@ public class Modelo {
 	}
 	
 	private void unificarVertices(ILista lista, ILista listaResultado) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		Comparator<Vertex<String, Landing>> comparador = new Vertex.ComparadorXKey();
 		Ordenamiento<Vertex<String, Landing>> algsOrdenamientoEventos = new Ordenamiento<>();
@@ -479,7 +477,7 @@ public class Modelo {
 	}
 	
 	private void unificarPaises(ILista lista, ILista listaResultado) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		Comparator<Country> comparador = new Country.ComparadorXNombre();
 		Ordenamiento<Country> algsOrdenamientoEventos = new Ordenamiento<>();
@@ -489,7 +487,7 @@ public class Modelo {
 	}
 	
 	private void procesarVertices(ILista lista, ILista listaResultado, Comparator<Vertex<String, Landing>> comparador) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		for (int i = 1; i <= lista.size(); i++) {
 			Vertex actual = (Vertex) lista.getElement(i);
@@ -506,7 +504,7 @@ public class Modelo {
 	}
 	
 	private void procesarPaises(ILista lista, ILista listaResultado, Comparator<Country> comparador) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		for (int i = 1; i <= lista.size(); i++) {
 			Country actual = (Country) lista.getElement(i);
@@ -523,20 +521,20 @@ public class Modelo {
 	}
 	
 	private Vertex obtenerSiguienteVertice(ILista lista, int posicion) 
-		throws PosException, VacioException {
+		throws DataStructureException {
 		
 		return posicion < lista.size() ? (Vertex) lista.getElement(posicion + 1) : null;
 	}
 	
 	private Country obtenerSiguientePais(ILista lista, int posicion) 
-		throws PosException, VacioException {
+		throws DataStructureException {
 		
 		return posicion < lista.size() ? (Country) lista.getElement(posicion + 1) : null;
 	}
 	
 	private void procesarUltimoVertice(ILista lista, ILista listaResultado, 
 		Comparator<Vertex<String, Landing>> comparador, Vertex actual, int posicion) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		Vertex anterior = posicion > 1 ? (Vertex) lista.getElement(posicion - 1) : null;
 		
@@ -551,7 +549,7 @@ public class Modelo {
 	
 	private void procesarUltimoPais(ILista lista, ILista listaResultado,
 		Comparator<Country> comparador, Country actual, int posicion) 
-		throws PosException, VacioException, NullException {
+		throws DataStructureException {
 		
 		Country anterior = posicion > 1 ? (Country) lista.getElement(posicion - 1) : null;
 		
@@ -615,7 +613,7 @@ public class Modelo {
 				}
 			}
 		} 
-		catch (PosException | VacioException| NullException  e) 
+		catch (DataStructureException e) 
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -757,12 +755,12 @@ public class Modelo {
             actualizarTablaLanding(landing1, vertice1);
             actualizarTablaLanding(landing2, vertice2);
             actualizarTablaNombre(landing1);
-        } catch (PosException | NullException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
     }
 
-    private void actualizarTablaLanding(Landing landing, Vertex vertice) throws PosException, NullException {
+    private void actualizarTablaLanding(Landing landing, Vertex vertice) throws DataStructureException {
         ILista elementopc = (ILista) landingidtabla.get(landing.getLandingId());
         if (elementopc == null) {
             ILista valores = new ArregloDinamico(1);
@@ -794,7 +792,7 @@ public class Modelo {
                     }
                 }
             }
-        } catch (PosException | VacioException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
     }

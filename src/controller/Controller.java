@@ -1,16 +1,9 @@
 package controller;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.Scanner;
 
-import model.data_structures.ILista;
-import model.data_structures.NullException;
-import model.data_structures.PosException;
-import model.data_structures.VacioException;
-import model.data_structures.YoutubeVideo;
 import model.logic.Modelo;
-import utils.Ordenamiento;
 import view.View;
 
 public class Controller<T> {

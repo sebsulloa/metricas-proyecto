@@ -29,7 +29,7 @@ public class MinPQ<K extends Comparable<K> ,V extends Comparable <V>>
 					swimTerminado=true;
 				}
 				pos=pos/2;
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -44,7 +44,7 @@ public class MinPQ<K extends Comparable<K> ,V extends Comparable <V>>
 			tamano++;
 			swim(arbol, tamano);
 		} 
-		catch (PosException | NullException e) {
+		catch (DataStructureException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -68,7 +68,7 @@ public class MinPQ<K extends Comparable<K> ,V extends Comparable <V>>
 			{
 				return null;
 			}
-		} catch (PosException | VacioException e) 
+		} catch (DataStructureException e) 
 		{
 			e.printStackTrace();
 		}
@@ -108,7 +108,7 @@ public class MinPQ<K extends Comparable<K> ,V extends Comparable <V>>
 					lista.exchange(pos, posMenor);
 					pos=posMenor;
 				}
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
@@ -126,7 +126,7 @@ public class MinPQ<K extends Comparable<K> ,V extends Comparable <V>>
 				tamano--;
 				sink(arbol, 1);
 
-			} catch (PosException | VacioException e) {
+			} catch (DataStructureException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}

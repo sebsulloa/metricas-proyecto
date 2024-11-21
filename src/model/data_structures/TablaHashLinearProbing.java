@@ -11,7 +11,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
         for(int i=1; i<=tamanoTabla; i++) {
             try {
                 listaNodos.insertElement(null, i);
-            } catch (PosException | NullException e) {
+            } catch (DataStructureException e) {
                 e.printStackTrace();
             }
         }
@@ -30,7 +30,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
             listaNodos.changeInfo(posicion, nuevo);
             tamanoAct++;
 
-        } catch (PosException | VacioException | NullException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
         
@@ -62,7 +62,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                         posicion = 1;
                     }
                 }
-            } catch (PosException | VacioException e) {
+            } catch (DataStructureException e) {
                 e.printStackTrace();
             }
         }
@@ -97,7 +97,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                 tamanoAct--;
             }
         }
-        catch (PosException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
 
@@ -120,7 +120,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return lista;
@@ -137,7 +137,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return lista;
@@ -154,7 +154,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                 }
             }
         }
-        catch (PosException | NullException | VacioException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
         return nodos;
@@ -170,7 +170,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
                     posicionRetornar = 1;
                 }
             }
-        } catch (PosException | VacioException e) {
+        } catch (DataStructureException e) {
             e.printStackTrace();
         }
         return posicionRetornar;
@@ -195,7 +195,7 @@ public class TablaHashLinearProbing<K extends Comparable<K>, V extends Comparabl
             }
             cantidadRehash++;
         }
-        catch (NullException | VacioException | PosException e) {
+        catch (DataStructureException e) {
             e.printStackTrace();
         }
     }
