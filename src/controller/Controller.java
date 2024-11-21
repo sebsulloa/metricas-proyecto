@@ -30,83 +30,103 @@ public class Controller<T> {
 		view = new View();
 	}
 		
-	public void run() 
-	{
+	public void run() {
 		Scanner lector = new Scanner(System.in).useDelimiter("\n");
 		boolean fin = false;
-
-		while( !fin )
-		{
+	
+		while (!fin) {
 			view.printMenu();
-
+	
 			int option = Integer.parseInt(lector.nextLine());
-			switch(option){
-			case 1:
-				view.printMessage("--------- \nCargar datos");
-				modelo = new Modelo(1); 
-				try 
-				{
-					modelo.cargar();
-				} catch (IOException e) {
-
-					e.printStackTrace();
+			try {
+				switch (option) {
+					case 1:
+						cargarDatos();
+						break;
+					case 2:
+						procesarReq1(lector);
+						break;
+					case 3:
+						procesarReq2();
+						break;
+					case 4:
+						procesarReq3(lector);
+						break;
+					case 5:
+						procesarReq4();
+						break;
+					case 6:
+						procesarReq5(lector);
+						break;
+					case 7:
+						fin = cerrarPrograma(lector);
+						break;
+					default:
+						view.printMessage("--------- \n Opción Inválida !! \n---------");
+						break;
 				}
-				view.printModelo(modelo);	
-
-				break;
-				
-			case 2:
-				view.printMessage("--------- \nIngrese el nombre del primer punto de conexión");
-				String punto1= lector.next();
-				lector.nextLine();
-				
-				view.printMessage("--------- \nIngrese el nombre del segundo punto de conexión");
-				String punto2= lector.next();
-				lector.nextLine();
-				
-				String res1=modelo.req1String(punto1, punto2);
-				view.printMessage(res1);
-				
-				break;
-				
-			case 3:
-				String res2= modelo.req2String();
-				view.printMessage(res2);
-				break;
-				
-			case 4:
-				view.printMessage("--------- \nIngrese el nombre del primer país");
-				String pais1= lector.next();
-				lector.nextLine();
-				
-				view.printMessage("--------- \nIngrese el nombre del segundo país");
-				String pais2= lector.next();
-				lector.nextLine();
-				
-				String res3= modelo.req3String(pais1, pais2);
-				view.printMessage(res3);
-				break;
-			case 5:
-				String res4= modelo.req4String();
-				view.printMessage(res4);
-				break;
-			case 6:
-				view.printMessage("--------- \nIngrese el nombre del punto de conexión");
-				String landing= lector.next();
-				lector.nextLine();
-				String res5= modelo.req5String(landing);
-				view.printMessage(res5);
-				break;
-			case 7:
-				view.printMessage("--------- \n Hasta pronto !! \n---------"); 
-				lector.close();
-				fin = true;
-				break;
-			default: 
-				view.printMessage("--------- \n Opcion Invalida !! \n---------");
-				break;
+			} catch (Exception e) {
+				view.printMessage("Ha ocurrido un error: " + e.getMessage());
 			}
 		}
-
-	}	
+	}
+	
+	private void cargarDatos() throws IOException {
+		view.printMessage("--------- \nCargar datos");
+		modelo = new Modelo(1);
+		modelo.cargar();
+		view.printModelo(modelo);
+	}
+	
+	private void procesarReq1(Scanner lector) {
+		view.printMessage("--------- \nIngrese el nombre del primer punto de conexión");
+		String punto1 = lector.next();
+		lector.nextLine();
+	
+		view.printMessage("--------- \nIngrese el nombre del segundo punto de conexión");
+		String punto2 = lector.next();
+		lector.nextLine();
+	
+		String res = modelo.req1String(punto1, punto2);
+		view.printMessage(res);
+	}
+	
+	private void procesarReq2() {
+		String res = modelo.req2String();
+		view.printMessage(res);
+	}
+	
+	private void procesarReq3(Scanner lector) {
+		view.printMessage("--------- \nIngrese el nombre del primer país");
+		String pais1 = lector.next();
+		lector.nextLine();
+	
+		view.printMessage("--------- \nIngrese el nombre del segundo país");
+		String pais2 = lector.next();
+		lector.nextLine();
+	
+		String res = modelo.req3String(pais1, pais2);
+		view.printMessage(res);
+	}
+	
+	private void procesarReq4() {
+		String res = modelo.req4String();
+		view.printMessage(res);
+	}
+	
+	private void procesarReq5(Scanner lector) {
+		view.printMessage("--------- \nIngrese el nombre del punto de conexión");
+		String landing = lector.next();
+		lector.nextLine();
+	
+		String res = modelo.req5String(landing);
+		view.printMessage(res);
+	}
+	
+	private boolean cerrarPrograma(Scanner lector) {
+		view.printMessage("--------- \n Hasta pronto !! \n---------");
+		lector.close();
+		return true;
+	}
+		
 }
